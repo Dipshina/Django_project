@@ -19,3 +19,11 @@ def home(request):
 
 def root_page(request):
     return render(request, template_name = "myapp/root_page.html")
+
+def temp_inherit_home(request):
+    return render(request, template_name = "myapp/temp_inherit_home.html")
+
+def portfolio(request):
+    return render(request, template_name= "myapp/portfolio.html")
+
+
