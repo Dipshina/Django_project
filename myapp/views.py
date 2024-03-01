@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import ClassRoom
 
 # Create your views here.
 def home(request):
@@ -25,5 +26,21 @@ def temp_inherit_home(request):
 
 def portfolio(request):
     return render(request, template_name= "myapp/portfolio.html")
+
+def classroom(request):
+    classrooms = [{"name": "One", "address": "KTM"},
+                  {"name": "Two", "address": "PKR"},
+                  {"name": "Three", "address": "BKT"},
+                  {"name": "Four", "address": "LTP"},
+                  ]
+    return render(request, template_name= "myapp/classroom.html", 
+                  context= {"classroom_name":"One", "location" : "KTM",
+                            "classrooms": classrooms})
+
+
+def classroomqs(request):
+    classrooms = ClassRoom.objects.all()
+    return render(request, template_name= "myapp/classroom_qs.html",
+           context = {"classrooms": classrooms })
 
 
