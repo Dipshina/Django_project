@@ -95,3 +95,28 @@ def delete_student(request, id):
         messages.success(request, "Student deleted successfully!")
         return redirect("crud_student")
     return render(request, template_name="crud/delete_student.html", context={"student": s})
+
+@login_required
+def user_profile(request):
+    user = request.user
+    return render(request, template_name="crud/user_profile.html", context = {"user": user})
+
+@login_required
+def update_profile(request):
+    user = request.user
+    if request.method == "POST":
+        user.first_name = request.POST.get("fn")
+        user.last_name = request.POST.get("ln")
+        user.save()
+
+        address = request.POST.get("address")
+        phone = request.POST.get("phone")
+        up, _ = UserProfile.objects.update_or_create(user=user, defaults={"address": address, "phone":phone})
+
+        pp = request.FILES.get('pp')
+        print(pp)
+        if pp:
+            up.profile_picture = pp
+            up.save()
+        return redirect("user_profile")
+    return render(request, template_name="crud/update_profile.html", context={"user": user})

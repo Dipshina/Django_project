@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import signup, user_login, classroom, user_logout, add_classroom, update_classroom, delete_classroom
-from .views import crud_student, add_student, delete_student
+from .views import crud_student, add_student, delete_student, user_profile, update_profile
 
 urlpatterns = [
     path('signup/', signup, name="signup"),
@@ -13,4 +13,6 @@ urlpatterns = [
     path("student/", crud_student, name="crud_student"),
     path("add-student/", add_student, name="add_student"),
     path("delete-student/<int:id>/", delete_student, name="delete_student"),
+    path("profile/", user_profile, name="user_profile"),
+    path("update-profile/", update_profile, name="update_profile")
 ]
