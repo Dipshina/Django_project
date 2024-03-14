@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import signup, user_login, classroom, user_logout, add_classroom, update_classroom, delete_classroom
-from .views import crud_student, add_student, delete_student, user_profile, update_profile
+from .views import crud_student, add_student, delete_student, user_profile, update_profile, form_classroom
 
 urlpatterns = [
     path('signup/', signup, name="signup"),
@@ -16,3 +16,9 @@ urlpatterns = [
     path("profile/", user_profile, name="user_profile"),
     path("update-profile/", update_profile, name="update_profile")
 ]
+
+django_form_urls = [
+    path('form-classroom/', form_classroom, name= "form_classroom")
+]
+
+urlpatterns += django_form_urls

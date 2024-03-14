@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'crud',
+    'classbased',
+    'api',
 ]
 
 MIDDLEWARE = [
