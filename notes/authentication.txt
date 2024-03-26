@@ -1,0 +1,15 @@
+March 22
+
+1. There are four different types of authentication for REST APIs
+
+a. Basic Authentication - You need to send user credentials everytime you request APIs
+
+b. Session Authentication - User credentials is provided only during the login which returns a SessionId. 
+The browser sends this SessionId in the cookies. 
+Now, everytime you request the server SessioId is also sent in the request header.
+
+c. Token Authentication - User credentials is provided only during the login which returns a Token. 
+The browser sends this Token in the LocalStorage. 
+Now, everytime you request the server Token is also sent in the request header.
+
+d. JWT (JSON WebToken) - 

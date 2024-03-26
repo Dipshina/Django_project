@@ -3,12 +3,16 @@ from django.urls import path
 from api.generic_views import ClassRoomViewSet, UserProfileViewSet
 from .views import home, HomeView, StudentAPIView, StudentListAPIView, SimpleClassRoomView, SimpleClassRoomListView, \
 ClassRoomRetrieveView, ClassRoomView, ClassRoomUpdateDeleteView
-from .generic_views import ClassRoomGenericView, ClassRoomGenericCreateView, ClassRoomListCreateView, ClassRoomUpdateView
+from .generic_views import ClassRoomGenericView, ClassRoomGenericCreateView, ClassRoomListCreateView, ClassRoomUpdateView, StudentViewSet, UserListCreateAPIViewSet
 
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken.views import obtain_auth_token
 router = DefaultRouter()
 router.register('classroom_viewset', ClassRoomViewSet)
 router.register('profile_viewset', UserProfileViewSet)
+router.register('user_viewset', UserListCreateAPIViewSet)
+router.register('student-viewset',StudentViewSet )
+
 
 
 
@@ -22,6 +26,9 @@ urlpatterns=[
         path("classroom/<int:id>/" ,ClassRoomRetrieveView.as_view()),
         path("classroom/", ClassRoomView.as_view()),
         path("classroom-update-delete/<int:id>/", ClassRoomUpdateDeleteView.as_view()),
+
+        # Login URL
+        path('login/', obtain_auth_token )
 ]
 
 generic_urlpatterns = [
